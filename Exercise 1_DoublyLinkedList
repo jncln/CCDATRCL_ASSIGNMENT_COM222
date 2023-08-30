@@ -1,0 +1,48 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    def traverse(self, node):
+        while node:
+            print(node.data, end=" -> ")
+            node = node.next
+
+    def traverse_in_reverse_order(self, node):
+        while node:
+            print(node.data, end=" -> ")
+            node = node.prev
+
+# Create a new instance of DoublyLinkedList
+doubly_linked_list = DoublyLinkedList()
+
+# Give each node the data it will hold
+doubly_linked_list.head = Node("Cleine")
+node_b = Node("noel")
+node_c = Node("bert")
+node_d = Node("rov")
+node_e = Node("chris")
+
+# Connect each node
+doubly_linked_list.head.prev = None
+doubly_linked_list.head.next = node_b
+
+node_b.prev = doubly_linked_list.head
+node_b.next = node_c
+
+node_c.prev = node_b
+node_c.next = node_d
+
+node_d.prev = node_c
+node_d.next = node_e
+
+node_e.prev = node_d
+node_e.next = None
+
+# Traverse the doubly linked list in reverse order
+doubly_linked_list.traverse_in_reverse_order(node_e)
